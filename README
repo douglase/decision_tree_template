@@ -1,0 +1,14 @@
+decision_tree git repository.
+
+Setup a graphviz decision tree for the PICTURE science team to visual 
+the flow of decisions in flight.
+
+base.dot is the template, an possible implimentation
+ is each countdown item has a .dot file, which is converted to a .tex page and which are all compiled together to form a 
+handbook.
+
+Convert to tex:
+$ dot2tex -ftikz -s base.dot >test.tex --docpreamble="\usepackage[landscape]{geometry}" --duplicate
+
+$convert to pdf:
+pdflatex \\nonstopmode\\input test.tex
