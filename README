@@ -9,7 +9,7 @@ In Ubuntu linux flavors install graphviz with:
 
 base.dot is the template, an possible implimentation
  is each countdown item has a .dot file, which is converted to a .tex page and which are all compiled together to form a 
-handbook.
+handbook (last is yet to be implimented).
 
 
 ideally uses the dot2tex python module, easily installed with:
