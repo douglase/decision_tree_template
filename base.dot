@@ -1,17 +1,31 @@
-/* courtesy Ian Darwin and Geoff Collyer, Softquad Inc. */
+/*Orignal layout: courtesy Ian Darwin and Geoff Collyer, Softquad Inc. http://www.graphviz.org/Gallery/directed/unix.gv.txt
+multiline formatting is latex embedded for 
+*/
+
+
 digraph unix {
-	size="6,6";
+	size="6,4";
+	rankdir=LR;	
 	node [color=gray, style=filled,shape=box];
+	edge [arrowsize=20];
 	/* Countdown Item # and name:*/
-	"Countdown item" -> "Observable";
+	"Countdown item" -> "Observable"[arrowsize=2, weight=2.];
 	/*Observable, i.e. PSF quality */
-	"Observable \n Criteria:\n #1." -> "Problem";
-	"Observable" -> "Good";
-	"Good" -> "Next Countdown Item";
-	"Problem" -> "Solution 1";
-	"Problem" -> "Solution 2";
-	"Problem" -> "Unsoluable";
-	"Unsoluable" -> "Next Countdown Item"
-	"Solution 1" -> "Observable";
-	"Solution 2" -> "Observable";
+
+	"Observable"  [texlbl="\parbox{3cm}{Observable:\\Criteria\\More Criteria}"];
+	"Observable" -> "Good"[arrowsize=.5, weight=2.];
+	"Observable" -> "Problem 1"[style="-triangle 90"];
+	"Observable" -> "Problem 2"[style="-triangle 90"];
+	"Observable" -> "Problem 3"[style="-triangle 90"];
+	"Good" -> "Next";
+
+	 /* Problem, i.e. PSF out of focus */
+	"Problem 1" [label="Problematic"][arrowsize=.5, weight=2.]; 
+	"Problem 1" -> "Solution 1"[style="-triangle 90"];
+	"Problem 1" -> "Solution 2"[style="-triangle 90"];
+	"Problem 2" -> "Solution 2"[style="-triangle 90"];
+	"Problem 3" -> "Unsoluable"[style="-triangle 90"];
+	"Solution 1" -> "Observable"[style="-triangle 90"];
+	"Solution 2" -> "Observable"[style="-triangle 90"];
+	"Unsoluable" -> "Next";
 }
