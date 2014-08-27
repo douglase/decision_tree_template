@@ -1,31 +1,55 @@
-/*Orignal layout: courtesy Ian Darwin and Geoff Collyer, Softquad Inc. http://www.graphviz.org/Gallery/directed/unix.gv.txt
-multiline formatting is latex embedded for 
+/*Orignal layout, Graphviz template courtesy Ian Darwin and Geoff Collyer, Softquad Inc. http://www.graphviz.org/Gallery/directed/unix.gv.txt
+
+multiline formatting is latex embedded: https://groups.google.com/forum/#!topic/dot2tex-users/nAQ2SwRxH6s
+
+the rank same formatting keyword to line up problems was found on: http://www.graphviz.org/content/generate-directory-tree-dot
+
+see README for dependencies and processing info.
 */
 
 
-digraph unix {
-	size="6,4";
-	rankdir=LR;	
+digraph tree {
+	/*size="6,4";*/
+	rankdir=LR;
+	minit=100;
+	maxiter=1000;
+	fixedsize=true;
+	/*nodesep=0.5;		*/	
 	node [color=gray, style=filled,shape=box];
-	edge [arrowsize=20];
 	/* Countdown Item # and name:*/
 	"Countdown item" -> "Observable"[arrowsize=2, weight=2.];
 	/*Observable, i.e. PSF quality */
 
+	/*define the observable, problems and solutions:*/
 	"Observable"  [texlbl="\parbox{3cm}{Observable:\\Criteria\\More Criteria}"];
-	"Observable" -> "Good"[arrowsize=.5, weight=2.];
-	"Observable" -> "Problem 1"[style="-triangle 90"];
-	"Observable" -> "Problem 2"[style="-triangle 90"];
-	"Observable" -> "Problem 3"[style="-triangle 90"];
+	"Problem 1"  [texlbl="\parbox{3cm}{1\\ Criteria not met}"];
+	"Problem 2"  [texlbl="\parbox{3cm}{2\\ Criteria not met}"];
+	"Problem 3"  [texlbl="\parbox{3cm}{3 \\ Criteria not met}"];
+	"Problem 4"  [texlbl="\parbox{3cm}{3 \\ Criteria not met}"];
+	"Solution 1"  [texlbl="\parbox{3cm}{A fix}"];
+	"Solution 3"  [texlbl="\parbox{3cm}{Another fix}"];
+	"Solution 2"  [texlbl="\parbox{3cm}{try this}"];
+
+	/*draw connections*/
+
+	/* first list the problems as a single column:*/
+	{
+	rank=same;	     
+	"Observable" -> "Problem 1" -> "Problem 2" -> "Problem 3" -> "Problem 4"->"Good"[style="-triangle 90"]
+	}
 	"Good" -> "Next";
 
-	 /* Problem, i.e. PSF out of focus */
+	 /* Connect problems to solutopns Try to keep to one solution per problem, 
+	 and after each solution check that it worked by returning to the observble before continuing
+	 define names above, use this section just to change the number of problems and solutions */
+
 	"Problem 1" [label="Problematic"][arrowsize=.5, weight=2.]; 
 	"Problem 1" -> "Solution 1"[style="-triangle 90"];
-	"Problem 1" -> "Solution 2"[style="-triangle 90"];
 	"Problem 2" -> "Solution 2"[style="-triangle 90"];
-	"Problem 3" -> "Unsoluable"[style="-triangle 90"];
+	"Problem 3" -> "Solution 3"[style="-triangle 90"];
+	"Problem 4" -> "Unsoluable"[style="-triangle 90"];
 	"Solution 1" -> "Observable"[style="-triangle 90"];
 	"Solution 2" -> "Observable"[style="-triangle 90"];
+	"Solution 3" -> "Observable"[style="-triangle 90"];
 	"Unsoluable" -> "Next";
 }
