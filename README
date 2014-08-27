@@ -7,8 +7,8 @@ In Ubuntu linux flavors install graphviz with:
     
     sudo apt-get install graphviz
 
-base.dot is the template, an possible implimentation
- is each countdown item has a .dot file, which is converted to a .tex page and which are all compiled together to form a 
+base.dot is the template, a possible implimentation is each countdown item has a .dot file, 
+which is converted to a .tex page and which are all compiled together to form a 
 handbook (last is yet to be implimented).
 
 
