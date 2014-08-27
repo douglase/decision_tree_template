@@ -1,0 +1,17 @@
+/* courtesy Ian Darwin and Geoff Collyer, Softquad Inc. */
+digraph unix {
+	size="6,6";
+	node [color=gray, style=filled,shape=box];
+	/* Countdown Item # and name:*/
+	"Countdown item" -> "Observable";
+	/*Observable, i.e. PSF quality */
+	"Observable \n Criteria:\n #1." -> "Problem";
+	"Observable" -> "Good";
+	"Good" -> "Next Countdown Item";
+	"Problem" -> "Solution 1";
+	"Problem" -> "Solution 2";
+	"Problem" -> "Unsoluable";
+	"Unsoluable" -> "Next Countdown Item"
+	"Solution 1" -> "Observable";
+	"Solution 2" -> "Observable";
+}
