@@ -1,14 +1,23 @@
 decision_tree git repository.
 
-Setup a graphviz decision tree for the PICTURE science team to visual 
-the flow of decisions in flight.
+Setup a graphviz (http://graphviz.org/) decision tree for a science team to visual 
+the flow of decisions.
+
+In Ubuntu linux flavors install graphviz with:
+    
+    sudo apt-get install graphviz
 
 base.dot is the template, an possible implimentation
  is each countdown item has a .dot file, which is converted to a .tex page and which are all compiled together to form a 
 handbook.
 
+
+ideally uses the dot2tex python module, easily installed with:
+    
+    pip install dot2tex
+
 Convert to tex:
 $ dot2tex -ftikz -s base.dot >test.tex --docpreamble="\usepackage[landscape]{geometry}" --duplicate
 
-$convert to pdf:
-pdflatex \\nonstopmode\\input test.tex
+convert to pdf:
+$ pdflatex \\nonstopmode\\input test.tex
