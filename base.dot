@@ -43,7 +43,6 @@ digraph tree {
 	 and after each solution check that it worked by returning to the observble before continuing
 	 define names above, use this section just to change the number of problems and solutions */
 
-	"Problem 1" [label="Problematic"][arrowsize=.5, weight=2.]; 
 	"Problem 1" -> "Solution 1"[style="-triangle 90"];
 	"Problem 2" -> "Solution 2"[style="-triangle 90"];
 	"Problem 3" -> "Solution 3"[style="-triangle 90"];
