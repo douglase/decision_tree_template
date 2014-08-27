@@ -17,7 +17,7 @@ ideally uses the dot2tex python module, easily installed with:
     pip install dot2tex
 
 Convert to tex:
-$ dot2tex -ftikz -s base.dot >test.tex --docpreamble="\usepackage[landscape]{geometry}" --duplicate
+$ dot2tex -ftikz -s base.dot >test.tex --docpreamble="\usepackage[landscape]{geometry}"
 
 convert to pdf:
 $ pdflatex \\nonstopmode\\input test.tex
